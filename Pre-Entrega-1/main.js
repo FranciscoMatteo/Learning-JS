@@ -8,8 +8,8 @@ if (cantidadNotas > 0) {                                                        
     for (i=0; i < cantidadNotas; i++) {                                                                         //  Ciclo for para que el usuario cargue la cantidad de notas deseadas
 
         let nota = parseInt(prompt(`Digite la nota nro ${notanro}`))
-        suma = suma + nota;
-        notanro = notanro + 1;
+        suma = suma + nota;                                                                                     // Acumulador
+        notanro = notanro + 1;                                                                                  // Contador
         }
 
     promedio = suma / cantidadNotas;
