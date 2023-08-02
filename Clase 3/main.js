@@ -131,18 +131,32 @@ alert(`El resultado es ${resultado}`);
 
 
 
+
+
+
+
+
+
+
+
+
+
 // SCOPE (lugar donde se reconoce una variable)
 
-/* Depende donde definamos las variables es donde se van a reconocer, no es lo mismo definirlas dentro de un bloque de codigo que fuera, por ejemplo:
+//Depende donde definamos las variables es donde se van a reconocer, no es lo mismo definirlas dentro de un bloque de codigo que fuera, por ejemplo:
 
+
+/*
 {
     let nombre = "Andres"
 }
 
 console.log(nombre);
-
-Esto no va a funcionar ya que la variable se encuentra en un bloque de codigo y la estamos llamando desde afuera, visceversa si funciona
 */
+
+
+//Esto no va a funcionar ya que la variable se encuentra en un bloque de codigo y la estamos llamando desde afuera, visceversa si funciona
+
 
 
 
@@ -162,5 +176,54 @@ const sumar = function (a,b) {
     return a+b;
 };                           
 
-console.log(sumar (5, 5));
+console.log(sumar (5, 4));
 */
+
+
+
+//               ARROW FUNCTION
+
+/*
+const suma = (a, b) => {
+    return a+b;                 //Return implicito con 2 parametros
+};                              // Las funciones flecha nos permiten evitar la mala practica de llamar una funcion sin haberla creado
+
+console.log(suma(5,6));
+*/
+
+/*
+const suma = (a, b) => a + b;
+const resta = (a, b) => a - b;
+const iva = (x) => x * 0.21;
+
+let precioProducto = 1000;
+let descuento =100;
+
+let nuevoPrecio = resta(suma(precioProducto, iva(precioProducto)), descuento)
+console.log(nuevoPrecio)
+*/
+
+
+
+
+
+
+/*
+// EJEMPLO VAGO DE LO QUE REALIZA JAVASCRITP EN LA SIGUIENTE OPERACION
+
+= resta(suma(precioProducto, iva(precioProducto)), descuento)
+
+// PRIMERO REEMPLAZA VARIABLES
+= resta(suma(1000, iva(1000)), 100)
+
+// REALIZA LAS OPERACIONES DE ADENTRO HACIA AFUERA
+= resta(suma(1000, 210), 100)
+
+= resta(1210, 100)
+
+= 1110
+*/
+
+
+
+
