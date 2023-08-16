@@ -222,7 +222,7 @@ console.log(hoy.getDay());
 
 
 
-
+h
 /*
 const navidad = new date ("December 25, 2023");
 const hoy = new Date("August 5, 2023");
