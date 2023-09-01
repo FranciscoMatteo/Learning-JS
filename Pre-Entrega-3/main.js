@@ -1,7 +1,14 @@
+// SECCION DE STOCK
 let stockEren = 1;
 let stockShinobi = 2;
 let stockSasukeBordado = 3;
 let stockSasukeDTG = 4;
+
+// SECCION CONTADORA
+let contadorEren = 0;
+let contadorShinobi = 0;
+let contadorSasukeBordado = 0;
+let contadorSasukeDTG = 0;
 
 let carritoConCosas = false;
 
@@ -12,6 +19,7 @@ const buzos = [
     {id: 4, nombre: "Buzo Sasuke DTG", precio: 1500},
 ];
 
+localStorage.setItem("carrito", JSON.stringify(buzos));
 
 // USO DE EVENTOS
 // BOTON NUMERO 1
@@ -19,18 +27,13 @@ let botonEren = document.getElementById("botonEren");
 
 botonEren.addEventListener("click", () => {
     //FUNCION A EJECUTAR
-    console.log("clickeaste el buzo de eren"); // Dejamos estos 2 console log temporalmente para corroborar su correcto funcionamiento
+    console.log("clickeaste el buzo de eren"); 
     stockEren = stockEren - 1;
-    console.log(stockEren);
-    carritoConCosas = true;
-
-    if (carritoConCosas = true) {
-        const carritoVacio = document.getElementById("carritoVacio");
-        const carritoLleno = document.getElementById("carritoLleno");
-    
-        carritoVacio.style.display= "none";
-        carritoLleno.style.display= "block";
-    }
+    contadorEren = contadorEren + 1;
+    localStorage.setItem("Contador-Eren", JSON.stringify(contadorEren));
+    // console.log(contadorEren);
+    // Dejamos estos 2 console log temporalmente para corroborar su correcto funcionamiento
+    // console.log(stockEren);
 
     if (stockEren < 0) {
         alert("No tenemos mas stock del buzo seleccionado");
@@ -56,7 +59,9 @@ botonShinobi.addEventListener("click", () => {
     //FUNCION A EJECUTAR
     console.log("clickeaste el buzo de Shinobi");
     stockShinobi = stockShinobi - 1;
+    contadorShinobi = contadorShinobi + 1;
     console.log(stockShinobi);
+    console.log(contadorShinobi);
     carritoConCosas = true;
 
     if (stockShinobi < 0) {
@@ -84,7 +89,9 @@ botonSasukeBordado.addEventListener("click", () => {
     //FUNCION A EJECUTAR
     console.log("clickeaste el buzo de Shinobi");
     stockSasukeBordado = stockSasukeBordado - 1;
+    contadorSasukeBordado = contadorSasukeBordado + 1;
     console.log(stockSasukeBordado);
+    console.log(contadorSasukeBordado);
     carritoConCosas = true;
 
     if (stockSasukeBordado < 0) {
@@ -111,7 +118,9 @@ botonSasukeDTG.addEventListener("click", () => {
     //FUNCION A EJECUTAR
     console.log("clickeaste el buzo de Shinobi");
     stockSasukeDTG = stockSasukeDTG - 1;
+    contadorSasukeDTG = contadorSasukeDTG + 1;
     console.log(stockSasukeDTG);
+    console.log(contadorSasukeDTG);
     carritoConCosas = true;
 
     if (stockSasukeDTG < 0) {
@@ -129,7 +138,7 @@ botonSasukeDTG.addEventListener("click", () => {
 
 // HASTA ESTE PUNTO LOGRAMOS QUE LOS BUZOS TENGAN UN STOCK Y SE VEAN REFLEJADOS EN LA PAGINA
 
-
-
-
-// EN ESTA SIGUIENTE SECCION VAMOS A TRATAR DE CREAR UN PUNTO DE NOTIFIACION EN EL LOGO DEL CARRITO CUANDO SE AGREGUE CUALQUIER PRENDA
+if (localStorage.getItem("contador-Eren") > 0) {
+    const buzoEren = document.getElementById("item1")
+    buzoEren.innerText = "Buzo Eren"
+}
