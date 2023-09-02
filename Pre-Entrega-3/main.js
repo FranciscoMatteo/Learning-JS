@@ -10,8 +10,13 @@ let contadorShinobi = 0;
 let contadorSasukeBordado = 0;
 let contadorSasukeDTG = 0;
 
-let carritoConCosas = false;
+// STORAGES PARA QUE LOS CONTADORES SE GUARDEN EN 0 ANTES DEL EVENTO CLICKEAR EL BOTON
+localStorage.setItem("Contador-Eren", JSON.stringify(contadorEren));
+localStorage.setItem("Contador-Shinobi", JSON.stringify(contadorShinobi));
+localStorage.setItem("Contador-SasukeBordado", JSON.stringify(contadorSasukeBordado));
+localStorage.setItem("Contador-SasukeDTG", JSON.stringify(contadorSasukeDTG));
 
+// ARRAY CON CARRITO
 const buzos = [
     {id: 1, nombre: "Buzo Eren", precio: 1500},
     {id: 2, nombre: "Buzo Shinobi", precio: 1900},
@@ -31,9 +36,9 @@ botonEren.addEventListener("click", () => {
     stockEren = stockEren - 1;
     contadorEren = contadorEren + 1;
     localStorage.setItem("Contador-Eren", JSON.stringify(contadorEren));
-    // console.log(contadorEren);
     // Dejamos estos 2 console log temporalmente para corroborar su correcto funcionamiento
     // console.log(stockEren);
+    // console.log(contadorEren);
 
     if (stockEren < 0) {
         alert("No tenemos mas stock del buzo seleccionado");
@@ -60,9 +65,7 @@ botonShinobi.addEventListener("click", () => {
     console.log("clickeaste el buzo de Shinobi");
     stockShinobi = stockShinobi - 1;
     contadorShinobi = contadorShinobi + 1;
-    console.log(stockShinobi);
-    console.log(contadorShinobi);
-    carritoConCosas = true;
+    localStorage.setItem("Contador-Shinobi", JSON.stringify(contadorShinobi));
 
     if (stockShinobi < 0) {
         alert("No tenemos mas stock del buzo seleccionado");
@@ -90,9 +93,7 @@ botonSasukeBordado.addEventListener("click", () => {
     console.log("clickeaste el buzo de Shinobi");
     stockSasukeBordado = stockSasukeBordado - 1;
     contadorSasukeBordado = contadorSasukeBordado + 1;
-    console.log(stockSasukeBordado);
-    console.log(contadorSasukeBordado);
-    carritoConCosas = true;
+    localStorage.setItem("Contador-SasukeBordado", JSON.stringify(contadorSasukeBordado));
 
     if (stockSasukeBordado < 0) {
         alert("No tenemos mas stock del buzo seleccionado");
@@ -119,9 +120,7 @@ botonSasukeDTG.addEventListener("click", () => {
     console.log("clickeaste el buzo de Shinobi");
     stockSasukeDTG = stockSasukeDTG - 1;
     contadorSasukeDTG = contadorSasukeDTG + 1;
-    console.log(stockSasukeDTG);
-    console.log(contadorSasukeDTG);
-    carritoConCosas = true;
+    localStorage.setItem("Contador-SasukeDTG", JSON.stringify(contadorSasukeDTG));
 
     if (stockSasukeDTG < 0) {
         alert("No tenemos mas stock del buzo seleccionado");
@@ -137,8 +136,3 @@ botonSasukeDTG.addEventListener("click", () => {
 });
 
 // HASTA ESTE PUNTO LOGRAMOS QUE LOS BUZOS TENGAN UN STOCK Y SE VEAN REFLEJADOS EN LA PAGINA
-
-if (localStorage.getItem("contador-Eren") > 0) {
-    const buzoEren = document.getElementById("item1")
-    buzoEren.innerText = "Buzo Eren"
-}
