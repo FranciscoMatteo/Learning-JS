@@ -493,6 +493,17 @@ footer ul li h2 {
   display: none;
 }
 
+.mostrandoCarrito {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.imagenCarritoCarta img {
+  width: 140px;
+  height: auto;
+}
 
 
 

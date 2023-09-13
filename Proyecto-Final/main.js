@@ -1,22 +1,22 @@
-// SECCION DE STOCK
-let stockEren = 1;
-let stockShinobi = 2;
-let stockSasukeBordado = 3;
-let stockSasukeDTG = 4;
+// // SECCION DE STOCK
+// let stockEren = 1;
+// let stockShinobi = 2;
+// let stockSasukeBordado = 3;
+// let stockSasukeDTG = 4;
 
-// SECCION CONTADORA
-let contadorEren = 0;
-let contadorShinobi = 0;
-let contadorSasukeBordado = 0;
-let contadorSasukeDTG = 0;
+// // SECCION CONTADORA
+// let contadorEren = 0;
+// let contadorShinobi = 0;
+// let contadorSasukeBordado = 0;
+// let contadorSasukeDTG = 0;
 
-// STORAGES PARA QUE LOS CONTADORES SE GUARDEN EN 0 ANTES DEL EVENTO CLICKEAR EL BOTON
-localStorage.setItem("Contador-Eren", JSON.stringify(contadorEren));
-localStorage.setItem("Contador-Shinobi", JSON.stringify(contadorShinobi));
-localStorage.setItem("Contador-SasukeBordado", JSON.stringify(contadorSasukeBordado));
-localStorage.setItem("Contador-SasukeDTG", JSON.stringify(contadorSasukeDTG));
+// // STORAGES PARA QUE LOS CONTADORES SE GUARDEN EN 0 ANTES DEL EVENTO CLICKEAR EL BOTON
+// localStorage.setItem("Contador-Eren", JSON.stringify(contadorEren));
+// localStorage.setItem("Contador-Shinobi", JSON.stringify(contadorShinobi));
+// localStorage.setItem("Contador-SasukeBordado", JSON.stringify(contadorSasukeBordado));
+// localStorage.setItem("Contador-SasukeDTG", JSON.stringify(contadorSasukeDTG));
 
-// ARRAY CON CARRITO
+/*// ARRAY CON CARRITO
 const buzos = [
     {id: 1, nombre: "Buzo Eren", precio: 1500},
     {id: 2, nombre: "Buzo Shinobi", precio: 1900},
@@ -29,8 +29,8 @@ localStorage.setItem("carrito", JSON.stringify(buzos));
 // USO DE EVENTOS
 // BOTON NUMERO 1
 let botonEren = document.getElementById("botonEren");
-
-botonEren.addEventListener("click", () => {
+*/
+/*botonEren.addEventListener("click", () => {
     //FUNCION A EJECUTAR
     console.log("clickeaste el buzo de eren"); 
     stockEren = stockEren - 1;
@@ -133,19 +133,52 @@ botonSasukeDTG.addEventListener("click", () => {
         botonSinStock4.style.maxWidth = "35%";
         botonSinStock4.style.justifyContent = "center";
     } 
-});
+});*/
 
 // HASTA ESTE PUNTO LOGRAMOS QUE LOS BUZOS TENGAN UN STOCK Y SE VEAN REFLEJADOS EN LA PAGINA
 
 
 
-let prueba;
-fetch('https://fakestoreapi.com/products?limit=3')
-            .then(res=>res.json())
-            .then(json=> {
-                prueba = json
-                console.log(prueba);
-            }
-            )
 
-            document.getElementById(`span`).innerText = prueba
+fetch("https://fakestoreapi.com/products?limit=4")
+            .then((res) => res.json())
+            .then((productos) => {
+                console.log("productos:", productos);
+                renderizarProductos(productos);
+            });
+
+const renderizarProductos = (productos) => {
+    const contenedor = document.querySelector(".contenedor");
+    contenedor.innerHTML = "";
+    productos.forEach((producto) => {
+        const div = document.createElement("div");
+        div.classList.add("contenedor-seccion");
+        div.innerHTML = `
+        <div class="carta">
+            <a href="#"> <img src="${producto.image}" </a> 
+            <h2>${producto.title}</h2>
+            <a href="#"> <button id="agregar-${producto.id}" type="button" class="btn btn-sucess mt-3 mb-4"> Agregar al carrito </button> </a>
+        </div>
+        `;
+        contenedor.appendChild(div);
+
+        const boton = document.getElementById(`agregar-${producto.id}`);
+        boton.addEventListener("click", () => {
+            console.log("Boton presionado")
+            agregarProducto(producto);
+        });
+    });
+};
+
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+const agregarProducto = (producto) => {
+    const productoEnCarrito = carrito.some((prod) => prod.id === producto.id);
+    if (productoEnCarrito) {
+        const productoActual = carrito.find((prod) => prod.id === producto.id);
+        productoActual.cantidad++;
+    } else {
+        carrito.push({...producto, cantidad: 1});
+    }
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    };
