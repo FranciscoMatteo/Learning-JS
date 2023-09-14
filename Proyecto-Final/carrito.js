@@ -1,32 +1,32 @@
-if (localStorage.getItem("Contador-Eren") > 0) {
-    const item1 = document.getElementById("item1");
-    item1.innerText = "Buzo Eren Yaeger";
-    item1p.innerText = "Cantidad = " + localStorage.getItem("Contador-Eren");
-    item11p.innerText = "Precio $" + localStorage.getItem("Contador-Eren") * 1500;
-  }
+// TRAEMOS EL CARRITO DEL LOCAL STORAGE 
+const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+console.log(carrito);
 
-  if (localStorage.getItem("Contador-Shinobi") > 0) {
-    const item1 = document.getElementById("item2");
-    item2.innerText = "Buzo Shinobi";
-    item2p.innerText = "Cantidad = " + localStorage.getItem("Contador-Shinobi");
-    item22p.innerText = "Precio $" + localStorage.getItem("Contador-Shinobi") * 1900;
-  }
+//RECORREMOS EL CARRITO
+document.addEventListener("DOMContentLoaded", function () {
+  const carritoDiv = document.querySelector(".mostrandoCarrito");
 
-  if (localStorage.getItem("Contador-SasukeBordado") > 0) {
-    const item1 = document.getElementById("item1");
-    item3.innerText = "Buzo Sasuke Bordado";
-    item3p.innerText = "Cantidad = " + localStorage.getItem("Contador-SasukeBordado");
-    item33p.innerText = "Precio $" + localStorage.getItem("Contador-SasukeBordado") * 3000;
-  }
+  // Muestra los datos del carrito en el HTML
+  carrito.forEach(producto => {
+    const productoElement = document.createElement("div");
+    // div.classList.add("contenedorCarrito");
+    productoElement.innerHTML = `
+      <h2>Nombre: ${producto.title}</h2>
+      <h5>Descripcion: ${producto.description}</h5>
+    <div class="imagenCarritoCarta">
+      <img src="${producto.image}" alt="asd">
+      <h4 class="verde">Precio: ${producto.price}</h4>
+      <h5>Cantidad: ${producto.cantidad}</h5>
+    </div>
+    <p>Precio total = $${producto.cantidad * producto.price}"</p>
+      <hr>
+    `;
+    carritoDiv.appendChild(productoElement);
+  });
+});
 
-  if (localStorage.getItem("Contador-SasukeDTG") > 0) {
-    const item1 = document.getElementById("item1");
-    item4.innerText = "Buzo Sasuke";
-    item4p.innerText = "Cantidad = " + localStorage.getItem("Contador-SasukeDTG");
-    item44p.innerText = "Precio $" + localStorage.getItem("Contador-SasukeDTG") * 1500;
-  }
 
-
+// BOTON PARA ELIMINAR CARRITO, FUNCIONA :D
   let eliminarCarrito = document.getElementById("eliminarCarrito");
 
   eliminarCarrito.addEventListener("click", () => { 

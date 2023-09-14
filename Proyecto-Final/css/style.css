@@ -493,9 +493,16 @@ footer ul li h2 {
   display: none;
 }
 
-.mostrandoCarrito {
+.contenedorCarrito{
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
+}
+
+.mostrandoCarrito {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
     margin-bottom: 10px;
 }
 
@@ -505,6 +512,9 @@ footer ul li h2 {
   height: auto;
 }
 
+.verde {
+  color:green
+}
 
 
 
