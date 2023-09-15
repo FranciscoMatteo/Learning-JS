@@ -74,6 +74,10 @@ ul {
   transition: all 0.3s linear;
 }
 
+.arreglado {
+  margin-top: -50px;
+}
+
 footer ul {
   list-style: none;
   display: inline-block;
