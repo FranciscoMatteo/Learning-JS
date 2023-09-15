@@ -26,6 +26,19 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+//CREANDO CALCULO DE PRECIO TOTAL DEL CARRITO
+const calcularPrecioTotal = () => {
+  let precioTotal = 0;
+  carrito.forEach((producto) => {
+      precioTotal += producto.price * producto.cantidad;
+  });
+  return precioTotal;
+};
+
+// MOSTRANDO PRECIO TOTAL EN HTML
+const precioTotalElement = document.querySelector(".precio-total");
+precioTotalElement.textContent = "Precio total del carrito: $" + calcularPrecioTotal();
+
 // BOTON PARA ELIMINAR CARRITO, FUNCIONA :D
   let eliminarCarrito = document.getElementById("eliminarCarrito");
 
