@@ -48,3 +48,11 @@ precioTotalElement.textContent = "Precio total del carrito: $" + calcularPrecioT
     localStorage.clear();
     location.reload();
   });
+
+  // BOTON COMPRAR
+  let botonComprar = document.getElementById("botonComprar");
+
+  botonComprar.addEventListener("click", () => { 
+
+    alert("Gracias por elegirnos, su compra llegara a su destino en los proximos 15 minutos, y con envio gratis ;)");
+  });
